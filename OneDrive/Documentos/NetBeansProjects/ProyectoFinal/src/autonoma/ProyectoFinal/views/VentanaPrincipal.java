@@ -6,13 +6,16 @@
 package autonoma.ProyectoFinal.views;
 
 import autonoma.ProyectoFinal.models.Restaurante;
+import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  * La ventana inicial que me permitirá acceder a las demás
  * @author Samuel Esteban Herrera Bedoya
  */
-public class VentanaPrincipal extends javax.swing.JFrame {
+public class VentanaPrincipal extends javax.swing.JFrame 
+{
 
     private Restaurante restaurante;
     
@@ -21,9 +24,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     {
        initComponents();
         this.setLocationRelativeTo(null);
-        try{
+        try
+        {
             this.setIconImage(new ImageIcon(getClass().getResource("/autonoma/DemoTienda/images/tienda.png")).getImage());
-        }catch(Exception e){
+        }catch(Exception e)
+        {
             
         }
         
@@ -44,7 +49,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
+        btnCerrar = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         btnAgregarInternacional = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -52,7 +58,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnMenu = new javax.swing.JPanel();
         btnMostrarMenu = new javax.swing.JLabel();
-        jPanel8 = new javax.swing.JPanel();
+        btnMostrarVenta = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -70,35 +76,52 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(13, 13, 13)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 51, 51));
+        jPanel2.setBackground(new java.awt.Color(255, 204, 102));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel2MouseEntered(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+        btnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCerrarMouseExited(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/ProyectoFinal/images/icons8-view-100.png"))); // NOI18N
+
+        javax.swing.GroupLayout btnCerrarLayout = new javax.swing.GroupLayout(btnCerrar);
+        btnCerrar.setLayout(btnCerrarLayout);
+        btnCerrarLayout.setHorizontalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCerrarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addContainerGap())
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        btnCerrarLayout.setVerticalGroup(
+            btnCerrarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnCerrarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -106,16 +129,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 204, 0));
@@ -123,6 +146,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnAgregarInternacional.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarInternacionalMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarInternacionalMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarInternacionalMouseExited(evt);
             }
         });
 
@@ -152,6 +181,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarNacionalMouseClicked(evt);
             }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarNacionalMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarNacionalMouseExited(evt);
+            }
         });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/ProyectoFinal/images/icons8-colombia-50.png"))); // NOI18N
@@ -174,11 +209,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(5, 5, 5))
         );
 
-        btnMenu.setBackground(new java.awt.Color(255, 255, 255));
         btnMenu.setPreferredSize(new java.awt.Dimension(110, 118));
         btnMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMenuMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMenuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMenuMouseExited(evt);
             }
         });
 
@@ -201,26 +241,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(5, 5, 5))
         );
 
-        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel8.setPreferredSize(new java.awt.Dimension(110, 105));
+        btnMostrarVenta.setPreferredSize(new java.awt.Dimension(110, 105));
+        btnMostrarVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMostrarVentaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMostrarVentaMouseExited(evt);
+            }
+        });
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/ProyectoFinal/images/icons8-cash-100.png"))); // NOI18N
-        jLabel5.setMaximumSize(new java.awt.Dimension(100, 100));
-        jLabel5.setMinimumSize(new java.awt.Dimension(100, 100));
-        jLabel5.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnMostrarVentaLayout = new javax.swing.GroupLayout(btnMostrarVenta);
+        btnMostrarVenta.setLayout(btnMostrarVentaLayout);
+        btnMostrarVentaLayout.setHorizontalGroup(
+            btnMostrarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnMostrarVentaLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        btnMostrarVentaLayout.setVerticalGroup(
+            btnMostrarVentaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnMostrarVentaLayout.createSequentialGroup()
                 .addGap(5, 5, 5)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
@@ -254,7 +298,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel7)
                         .addGap(61, 61, 61)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnMostrarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(43, 43, 43)))
@@ -277,14 +321,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMostrarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(btnAgregarNacional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAgregarInternacional, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19))))
+                        .addGap(19, 19, 19)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -330,8 +375,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarInternacionalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarInternacionalMouseClicked
-        AgregarPlatoInternal ventanaInventario = new AgregarPlatoInternal(this, true, this.restaurante, this);
-        ventanaInventario.setVisible(true);
+        AgregarPlatoInternal platoInternal = new AgregarPlatoInternal(this, true, this.restaurante, this);
+        platoInternal.setVisible(true);
     }//GEN-LAST:event_btnAgregarInternacionalMouseClicked
 
     private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
@@ -339,21 +384,74 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel2MouseEntered
 
     private void btnMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuMouseClicked
-        MostrarMenu mostrarMenu = new MostrarMenu(this, true);
+        MostrarMenu mostrarMenu = new MostrarMenu(this, true, this.restaurante, this);
         mostrarMenu.setVisible(true);
     }//GEN-LAST:event_btnMenuMouseClicked
 
     private void btnAgregarNacionalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarNacionalMouseClicked
-        // TODO add your handling code here:
+        AgregarPlatoNal platoNal = new AgregarPlatoNal(this, true, this.restaurante, this);
+        platoNal.setVisible(true);
     }//GEN-LAST:event_btnAgregarNacionalMouseClicked
 
+    private void btnAgregarNacionalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarNacionalMouseEntered
+        this.mouseEntered(btnAgregarNacional);
+    }//GEN-LAST:event_btnAgregarNacionalMouseEntered
+
+    private void btnAgregarNacionalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarNacionalMouseExited
+        this.mouseExited(btnAgregarNacional);
+    }//GEN-LAST:event_btnAgregarNacionalMouseExited
+
+    private void btnAgregarInternacionalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarInternacionalMouseEntered
+        this.mouseEntered(btnAgregarInternacional);
+    }//GEN-LAST:event_btnAgregarInternacionalMouseEntered
+
+    private void btnAgregarInternacionalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarInternacionalMouseExited
+        this.mouseExited(btnAgregarInternacional);
+    }//GEN-LAST:event_btnAgregarInternacionalMouseExited
+
+    private void btnMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuMouseEntered
+        this.mouseEntered(btnMenu);
+    }//GEN-LAST:event_btnMenuMouseEntered
+
+    private void btnMostrarVentaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarVentaMouseEntered
+        this.mouseEntered(btnMostrarVenta);
+    }//GEN-LAST:event_btnMostrarVentaMouseEntered
+
+    private void btnMostrarVentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarVentaMouseExited
+        this.mouseExited(btnMostrarVenta);
+    }//GEN-LAST:event_btnMostrarVentaMouseExited
+
+    private void btnMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuMouseExited
+        this.mouseExited(btnMenu);
+    }//GEN-LAST:event_btnMenuMouseExited
+
+    private void btnCerrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseEntered
+        this.mouseEntered(btnCerrar);
+    }//GEN-LAST:event_btnCerrarMouseEntered
+
+    private void btnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarMouseExited
+        this.mouseExited(btnCerrar);
+    }//GEN-LAST:event_btnCerrarMouseExited
+
+    private void mouseEntered(JPanel panel)
+    {
+        panel.setBackground(new Color(255, 131, 7));
+    }
+    
+    private void mouseExited(JPanel panel)
+    {
+        panel.setBackground(new Color(240,240,240));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnAgregarInternacional;
     private javax.swing.JPanel btnAgregarNacional;
+    private javax.swing.JPanel btnCerrar;
     private javax.swing.JPanel btnMenu;
     private javax.swing.JLabel btnMostrarMenu;
+    private javax.swing.JPanel btnMostrarVenta;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -364,7 +462,5 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,15 +21,11 @@ import javax.swing.table.TableModel;
  */
 public class MostrarMenu extends javax.swing.JDialog 
 {
-
-    
      private ArrayList<Plato> platos;
      private VentanaPrincipal ventanaPrincipal;
      private Restaurante restaurante;
-    /**
-     * Creates new form MostrarMenu
-     */
-    public MostrarMenu(java.awt.Frame parent, boolean modal) 
+
+    public MostrarMenu(VentanaPrincipal ventanaPrincipal, Restaurante restaurante, java.awt.Frame parent, boolean modal) 
     {
         super(parent, modal);
         initComponents();
@@ -68,8 +64,8 @@ public class MostrarMenu extends javax.swing.JDialog
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaMenu = new javax.swing.JTable();
-        Actualizar = new javax.swing.JButton();
-        btnEliminar = new javax.swing.JButton();
+        btnActualizarPlato = new javax.swing.JButton();
+        btnEliminarPlato = new javax.swing.JButton();
 
         jPanel4.setBackground(new java.awt.Color(255, 153, 102));
 
@@ -172,15 +168,15 @@ public class MostrarMenu extends javax.swing.JDialog
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(143, 143, 143))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(23, 23, 23)
                 .addComponent(jLabel7)
-                .addGap(28, 28, 28))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         btnVolverMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -231,17 +227,17 @@ public class MostrarMenu extends javax.swing.JDialog
             tablaMenu.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        Actualizar.setText("jButton1");
-        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+        btnActualizarPlato.setText("Actualizar");
+        btnActualizarPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ActualizarActionPerformed(evt);
+                btnActualizarPlatoActionPerformed(evt);
             }
         });
 
-        btnEliminar.setText("Eliminar");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarPlato.setText("Eliminar");
+        btnEliminarPlato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
+                btnEliminarPlatoActionPerformed(evt);
             }
         });
 
@@ -254,9 +250,9 @@ public class MostrarMenu extends javax.swing.JDialog
                 .addGroup(fondoVentanaMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(fondoVentanaMenuLayout.createSequentialGroup()
                         .addGap(126, 126, 126)
-                        .addComponent(Actualizar)
+                        .addComponent(btnActualizarPlato)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEliminar))
+                        .addComponent(btnEliminarPlato))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(5, 5, 5)
                 .addComponent(btnVolverMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,11 +264,11 @@ public class MostrarMenu extends javax.swing.JDialog
                 .addGroup(fondoVentanaMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnVolverMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(36, 36, 36)
+                .addGap(31, 31, 31)
                 .addGroup(fondoVentanaMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Actualizar)
-                    .addComponent(btnEliminar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                    .addComponent(btnActualizarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarPlato, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -298,36 +294,38 @@ public class MostrarMenu extends javax.swing.JDialog
         this.mouseExited(btnVolverMenu);
     }//GEN-LAST:event_btnVolverMenuMouseExited
 
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
-        
+    private void btnEliminarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarPlatoActionPerformed
         int fila = this.tablaMenu.getSelectedRow();
-        if(fila>=0){
+        if(fila>=0)
+        {
             Plato p = this.platos.get(fila);
             int option = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el plato "+p.getNombre()+" de forma permanente?");
-            if(option == 0){
+            if(option == 0)
+            {
                 this.restaurante.eliminarPlato(p.getId());
                 this.platos = this.restaurante.obtenerTodosPlatos();
                 this.llenarTabla();
                 JOptionPane.showMessageDialog(this, "El plato "+p.getNombre()+" fue eliminado de forma exitosa");
             }
-        }else{
+        }else
+        {
             JOptionPane.showMessageDialog(this, "Por favor seleccione el plato que desea eliminar");
         }
         
-    }//GEN-LAST:event_btnEliminarActionPerformed
+    }//GEN-LAST:event_btnEliminarPlatoActionPerformed
 
-    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
-        // TODO add your handling code here:
-         int fila = this.tablaMenu.getSelectedRow();
-        if(fila>=0){
+    private void btnActualizarPlatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarPlatoActionPerformed
+        int fila = this.tablaMenu.getSelectedRow();
+        if(fila>=0)
+        {
             Plato p = this.platos.get(fila);
             ActualizarPlato ventanaActualizar = new ActualizarPlato(this.ventanaPrincipal, true, restaurante, p, this);
             ventanaActualizar.setVisible(true);
-        }else{
+        }else
+        {
             JOptionPane.showMessageDialog(this, "Por favor seleccione el plato que desea eliminar");
         }
-    }//GEN-LAST:event_ActualizarActionPerformed
+    }//GEN-LAST:event_btnActualizarPlatoActionPerformed
 
     private void mouseEntered(JPanel panel)
     {
@@ -341,27 +339,26 @@ public class MostrarMenu extends javax.swing.JDialog
     
    
     
-    public void llenarTabla(){
+    public void llenarTabla()
+    {
         DefaultTableModel modelDefault = new DefaultTableModel(new String[]{"Id","Nombre","Precio", "Costo"}, this.platos.size());
         this.tablaMenu.setModel(modelDefault);
         
         TableModel dataModel = tablaMenu.getModel();
-        for (int i = 0; i < this.platos.size(); i++) {
+        for (int i = 0; i < this.platos.size(); i++) 
+        {
             Plato plato = this.platos.get(i);
             
             dataModel.setValueAt(plato.getId(),i,0);
             dataModel.setValueAt(plato.getNombre(),i,1);
             dataModel.setValueAt(plato.getPrecioVenta(),i,2);
-            dataModel.setValueAt(plato.getCostoFabrica(),i,3);
-            
-            
-        }
-        
+            dataModel.setValueAt(plato.getCostoFabrica(),i,3);           
+        }   
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Actualizar;
-    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnActualizarPlato;
+    private javax.swing.JButton btnEliminarPlato;
     private javax.swing.JPanel btnVolverMenu;
     private javax.swing.JPanel fondoVentanaMenu;
     private javax.swing.JLabel jLabel3;

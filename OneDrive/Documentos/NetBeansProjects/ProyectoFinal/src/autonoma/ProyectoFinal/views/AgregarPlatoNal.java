@@ -19,12 +19,13 @@ import javax.swing.JOptionPane;
 public class AgregarPlatoNal extends javax.swing.JDialog 
 {
     
-    private int contador= 0;
+     private int contador= 1;
     private Restaurante restaurante;
+    private VentanaPrincipal ventanaPrincipal;
     /**
      * Creates new form AgregarPlato
      */
-    public AgregarPlatoNal(java.awt.Frame parent, boolean modal) {
+    public AgregarPlatoNal(java.awt.Frame parent, boolean modal, Restaurante restaurante, VentanaPrincipal ventanaPrincipal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -35,6 +36,8 @@ public class AgregarPlatoNal extends javax.swing.JDialog
         {
             
         }
+        this.ventanaPrincipal= ventanaPrincipal;
+        this.restaurante=restaurante;
     }
 
     /**

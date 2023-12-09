@@ -107,6 +107,4 @@ public class Menu
     public ArrayList<Plato> getPlatos() {
         return platos;
     }
-    
-    
 }

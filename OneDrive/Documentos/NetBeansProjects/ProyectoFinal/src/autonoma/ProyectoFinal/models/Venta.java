@@ -3,7 +3,7 @@ package autonoma.ProyectoFinal.models;
 import autonoma.ProyectoFinal.models.Plato;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
 
 /**
  * Intercambio de dos o más personas donde se intercambia un producto y/o servicio por un monto de dinero
@@ -79,7 +79,7 @@ public class Venta
         this.fecha = fecha;
     }
 
-    public List<Plato> getPlatosVendidos() 
+    public ArrayList<Plato> getPlatosVendidos() 
     {
         return platosVendidos;
     }
@@ -99,7 +99,8 @@ public class Venta
         this.ventas = ventas;
     }
 
-    public boolean agregarVenta(Venta venta){
+    public boolean agregarVenta(Venta venta)
+    {
        return this.ventas.add(venta);
     }
     public Venta buscarVenta(Venta venta)

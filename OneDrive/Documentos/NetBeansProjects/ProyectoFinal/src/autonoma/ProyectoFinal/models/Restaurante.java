@@ -2,7 +2,6 @@
 package autonoma.ProyectoFinal.models;
 import java.util.ArrayList;
 import autonoma.ProyectoFinal.models.Menu;
-import java.util.List;
 import autonoma.ProyectoFinal.models.Plato;
 import java.util.Date;
 /**
@@ -16,11 +15,11 @@ public class Restaurante
     private String direccion;
     private String telefono;
     private Menu menu;
-    private List<Venta> ventas;
+    private ArrayList<Venta> ventas;
 
 
 
-    public Restaurante(String nombre, String direccion, String telefono, Menu menu, List<Venta> ventas) {
+    public Restaurante(String nombre, String direccion, String telefono, Menu menu, ArrayList<Venta> ventas) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
