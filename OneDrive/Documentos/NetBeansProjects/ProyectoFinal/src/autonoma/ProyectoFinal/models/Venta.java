@@ -21,14 +21,25 @@ public class Venta
     private ArrayList<Plato> platosVendidos;
     private ArrayList<Venta> ventas;
     
-    public Venta(double valorTotal, double valorGanancia, Date fecha, ArrayList<Plato> platosVendidos)
+    public Venta()
     {
-        this.codigo = codigoActual++;
+        this.codigo = Venta.codigoActual;
         this.valorTotal = valorTotal;
         this.valorGanancia = valorGanancia;
-        this.fecha = new Date();
+        this.fecha = fecha;
         this.platosVendidos = platosVendidos;
+        codigoActual++;
     }
+
+    public Venta(double valorTotal, double valorGanancia, Date fecha) {
+        this.codigo = Venta.codigoActual;
+        this.valorTotal = valorTotal;
+        this.valorGanancia = valorGanancia;
+        this.fecha = fecha;
+        codigoActual++;
+    }
+    
+    
 
     public static int getCodigoActual() 
     {

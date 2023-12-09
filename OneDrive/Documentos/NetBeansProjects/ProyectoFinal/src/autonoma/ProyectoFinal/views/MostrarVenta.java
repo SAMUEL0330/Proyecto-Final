@@ -5,9 +5,17 @@
  */
 package autonoma.ProyectoFinal.views;
 
+import autonoma.ProyectoFinal.models.Plato;
+import autonoma.ProyectoFinal.models.Restaurante;
+import autonoma.ProyectoFinal.models.Venta;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  * 
@@ -15,11 +23,15 @@ import javax.swing.JPanel;
  */
 public class MostrarVenta extends javax.swing.JDialog 
 {
-
+    
+    private Restaurante restaurante;
+    private VentanaPrincipal ventanaPrincipal;
+    private ArrayList<Plato> platos;
+    private ArrayList<Venta> vendidos;
     /**
      * Creates new form MostrarVenta
      */
-    public MostrarVenta(java.awt.Frame parent, boolean modal) 
+    public MostrarVenta(java.awt.Frame parent, boolean modal, Restaurante restaurante, VentanaPrincipal ventanaPrincipal) 
     {
         super(parent, modal);
         initComponents();
@@ -31,6 +43,11 @@ public class MostrarVenta extends javax.swing.JDialog
         {
             
         }
+        this.platos = restaurante.obtenerTodosPlatos();
+        this.vendidos = restaurante.getVentas();
+        this.restaurante=restaurante;
+        this.ventanaPrincipal= ventanaPrincipal;
+        llenarTablaUno();
     }
 
     /**
@@ -42,6 +59,40 @@ public class MostrarVenta extends javax.swing.JDialog
     private void mouseEntered(JPanel panel)
     {
         panel.setBackground(new Color(255, 131, 7));
+    }
+    
+    public void llenarTablaUno(){
+        DefaultTableModel modelDefault = new DefaultTableModel(new String[]{"Nombre","Precio"}, this.platos.size());
+        this.jTable2.setModel(modelDefault);
+        
+        TableModel dataModel = jTable2.getModel();
+        for (int i = 0; i < this.platos.size(); i++) {
+            Plato p = this.platos.get(i);
+            
+            dataModel.setValueAt(p.getNombre(),i,0);
+            dataModel.setValueAt(p.getPrecioVenta(),i,1);
+            
+        }
+        
+    }
+    
+    
+    
+    public void llenarTablaDos(){
+        DefaultTableModel modelDefault = new DefaultTableModel(new String[]{"Fecha","Codigo","Total", "Ganancia"}, this.vendidos.size());
+        this.jTable1.setModel(modelDefault);
+        
+        TableModel dataModel = jTable1.getModel();
+        for (int i = 0; i < this.vendidos.size(); i++) {
+            Venta v = this.vendidos.get(i);
+            
+            dataModel.setValueAt(v.getFecha(),i,0);
+            dataModel.setValueAt(v.getCodigo(),i,1);
+            dataModel.setValueAt(v.getValorTotal(),i,2);
+            dataModel.setValueAt(v.getValorGanancia(),i,3);
+            
+        }
+        
     }
     
     private void mouseExited(JPanel panel)
@@ -64,8 +115,8 @@ public class MostrarVenta extends javax.swing.JDialog
         jTable2 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnGeneraVenta = new javax.swing.JButton();
+        btnEliminarVenta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -94,6 +145,9 @@ public class MostrarVenta extends javax.swing.JDialog
         );
 
         btnVolverVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVolverVentaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnVolverVentaMouseEntered(evt);
             }
@@ -158,15 +212,30 @@ public class MostrarVenta extends javax.swing.JDialog
             jTable2.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        jLabel5.setText("Productos para Vender");
+        jLabel5.setText("Platos para Vender");
 
-        jLabel6.setText("Productos Vendidos");
+        jLabel6.setText("Platos Vendidos");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/ProyectoFinal/images/icons8-shopping-cart-16.png"))); // NOI18N
-        jButton1.setText("Vender");
+        btnGeneraVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/ProyectoFinal/images/icons8-shopping-cart-16.png"))); // NOI18N
+        btnGeneraVenta.setText("Vender");
+        btnGeneraVenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGeneraVentaMouseClicked(evt);
+            }
+        });
+        btnGeneraVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGeneraVentaActionPerformed(evt);
+            }
+        });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/ProyectoFinal/images/icons8-x-16.png"))); // NOI18N
-        jButton2.setText("Eliminar");
+        btnEliminarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/autonoma/ProyectoFinal/images/icons8-x-16.png"))); // NOI18N
+        btnEliminarVenta.setText("Eliminar");
+        btnEliminarVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarVentaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -178,7 +247,7 @@ public class MostrarVenta extends javax.swing.JDialog
                         .addGap(123, 123, 123)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
-                        .addComponent(jButton1))
+                        .addComponent(btnGeneraVenta))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(184, 184, 184)
                         .addComponent(jLabel5))
@@ -194,7 +263,7 @@ public class MostrarVenta extends javax.swing.JDialog
                             .addGap(15, 15, 15)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton2))))
+                            .addComponent(btnEliminarVenta))))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -216,9 +285,9 @@ public class MostrarVenta extends javax.swing.JDialog
                         .addGap(88, 88, 88))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(73, 73, 73)
-                        .addComponent(jButton1)
+                        .addComponent(btnGeneraVenta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)
+                        .addComponent(btnEliminarVenta)
                         .addGap(131, 131, 131))))
         );
 
@@ -246,10 +315,57 @@ public class MostrarVenta extends javax.swing.JDialog
         this.mouseExited(btnVolverVenta);
     }//GEN-LAST:event_btnVolverVentaMouseExited
 
+    private void btnVolverVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverVentaMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnVolverVentaMouseClicked
+
+    private void btnGeneraVentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGeneraVentaMouseClicked
+        
+    }//GEN-LAST:event_btnGeneraVentaMouseClicked
+
+    private void btnGeneraVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGeneraVentaActionPerformed
+        // TODO add your handling code here:
+        
+        int fila = this.jTable2.getSelectedRow();
+        if(fila>=0){
+            Plato p = this.platos.get(fila);
+            double ganancia = p.getPrecioVenta() - p.getCostoFabrica();
+            ganancia = ganancia - (ganancia* 0.19);
+            Venta nuevaVenta = new Venta(p.getPrecioVenta(),ganancia , new Date());
+            this.vendidos.add(nuevaVenta);
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor seleccione el producto que desea vender");
+        }
+        
+        llenarTablaDos();
+    }//GEN-LAST:event_btnGeneraVentaActionPerformed
+
+    private void btnEliminarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarVentaActionPerformed
+        // TODO add your handling code here:
+        
+        int fila = this.jTable1.getSelectedRow();
+        if(fila>=0){
+            Venta v = this.vendidos.get(fila);
+            int option = JOptionPane.showConfirmDialog(this, "¿Desea eliminar la venta realizada de forma permanente?");
+            if(option == 0){
+                for (int i = 0; i < this.vendidos.size(); i++){
+                    if(vendidos.get(i).equals(v)){
+                        vendidos.remove(v);
+                    }
+                }
+                this.llenarTablaDos();
+                JOptionPane.showMessageDialog(this, "El venta fue eliminada de forma exitosa");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor seleccione la venta que desea eliminar");
+        }
+    }//GEN-LAST:event_btnEliminarVentaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminarVenta;
+    private javax.swing.JButton btnGeneraVenta;
     private javax.swing.JPanel btnVolverVenta;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

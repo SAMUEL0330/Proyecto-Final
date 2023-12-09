@@ -7,9 +7,12 @@ package autonoma.ProyectoFinal.models;
 public class PlatoNacional extends Plato 
 {
 
-    public PlatoNacional(int id, String nombre, double precioVenta, double costoFabrica) {
-        super(id, nombre, precioVenta, costoFabrica);
+    public PlatoNacional() {
     }
+
+    public PlatoNacional(String nombre, double precioVenta, double costoFabrica) {
+        super(nombre, precioVenta, costoFabrica);
+    } 
 
     
     

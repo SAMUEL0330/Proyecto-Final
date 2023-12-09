@@ -9,26 +9,40 @@ package autonoma.ProyectoFinal.models;
 
 public abstract class Plato 
 {
-    private int id;
+    
+    private static int contadorPlato = 1;
+
+    private long id;
     private String nombre;
     private double precioVenta;
     private double costoFabrica; 
 
-    public Plato(int id, String nombre, double precioVenta, double costoFabrica) {
-        this.id = id;
+    public Plato() {
+        this.id = Plato.contadorPlato;
         this.nombre = nombre;
         this.precioVenta = precioVenta;
         this.costoFabrica = costoFabrica;
+        contadorPlato++;
     }
+
+    public Plato(String nombre, double precioVenta, double costoFabrica) {
+        this.id = Plato.contadorPlato;
+        this.nombre = nombre;
+        this.precioVenta = precioVenta;
+        this.costoFabrica = costoFabrica;
+        contadorPlato++;
+    }
+    
+    
 
     
 
-    public int getId() 
+    public Long getId() 
     {
         return id;
     }
 
-    public void setId(int id) 
+    public void setId(Long id) 
     {
         this.id = id;
     }

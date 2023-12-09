@@ -103,6 +103,11 @@ public class ActualizarPlato extends javax.swing.JDialog
 
         Actualizar.setBackground(new java.awt.Color(0, 255, 51));
         Actualizar.setText("Actualizar");
+        Actualizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ActualizarMouseClicked(evt);
+            }
+        });
         Actualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ActualizarActionPerformed(evt);
@@ -204,6 +209,29 @@ public class ActualizarPlato extends javax.swing.JDialog
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnVolverActualizarActionPerformed
+
+    private void ActualizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActualizarMouseClicked
+        // TODO add your handling code here:
+        
+       String nombre = this.btnAgregarNombre.getText();
+        
+        try {
+            double precio = Double.parseDouble(this.btnCosto.getText());
+            this.plato.setNombre(nombre);
+            this.plato.setPrecioVenta((long) precio);
+            
+            this.restaurante.actualizarPlato(this.plato.getId(), this.plato);
+            JOptionPane.showMessageDialog(this, "Plato " + nombre + " ha sido actualizado exitosamente");
+            this.mostrarMenu.llenarTabla();
+            this.dispose();
+            
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese un número en el campo costo Fabricación");
+            this.btnCosto.setText("");
+        }
+ 
+    }//GEN-LAST:event_ActualizarMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Actualizar;

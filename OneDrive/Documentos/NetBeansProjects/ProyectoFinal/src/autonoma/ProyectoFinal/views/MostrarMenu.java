@@ -40,6 +40,7 @@ public class MostrarMenu extends javax.swing.JDialog
         this.restaurante= restaurante;
         this.ventanaPrincipal = ventanaPrincipal;
         this.platos = restaurante.obtenerTodosPlatos();
+        llenarTabla();
     }
 
     /**
@@ -180,6 +181,9 @@ public class MostrarMenu extends javax.swing.JDialog
         );
 
         btnVolverMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVolverMenuMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnVolverMenuMouseEntered(evt);
             }
@@ -210,13 +214,13 @@ public class MostrarMenu extends javax.swing.JDialog
 
         tablaMenu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Precio", "Costo"
+                "ID", "Nombre", "Precio", "Costo", "Ganancia"
             }
         ));
         jScrollPane1.setViewportView(tablaMenu);
@@ -225,6 +229,7 @@ public class MostrarMenu extends javax.swing.JDialog
             tablaMenu.getColumnModel().getColumn(1).setResizable(false);
             tablaMenu.getColumnModel().getColumn(2).setResizable(false);
             tablaMenu.getColumnModel().getColumn(3).setResizable(false);
+            tablaMenu.getColumnModel().getColumn(4).setResizable(false);
         }
 
         btnActualizarPlato.setText("Actualizar");
@@ -327,6 +332,10 @@ public class MostrarMenu extends javax.swing.JDialog
         }
     }//GEN-LAST:event_btnActualizarPlatoActionPerformed
 
+    private void btnVolverMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMenuMouseClicked
+        this.dispose();
+    }//GEN-LAST:event_btnVolverMenuMouseClicked
+
     private void mouseEntered(JPanel panel)
     {
         panel.setBackground(new Color(255, 131, 7));
@@ -336,9 +345,7 @@ public class MostrarMenu extends javax.swing.JDialog
     {
         panel.setBackground(new Color(240,240,240));
     }
-    
-   
-    
+
     public void llenarTabla()
     {
         DefaultTableModel modelDefault = new DefaultTableModel(new String[]{"Id","Nombre","Precio", "Costo"}, this.platos.size());

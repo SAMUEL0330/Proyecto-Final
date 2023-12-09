@@ -19,20 +19,24 @@ public class Restaurante
 
 
 
-    public Restaurante(String nombre, String direccion, String telefono, Menu menu, ArrayList<Venta> ventas) {
+    public Restaurante(String nombre, String direccion, String telefono, Menu menu, ArrayList<Venta> ventas) 
+    {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.menu = menu;
         this.ventas = ventas;
-    }
-    
-    
+    } 
 
     
     public Plato buscarPlato(Plato plato)
     {
         return this.menu.buscarPlato(plato);
+    }
+    
+    public Plato buscarPlato(String nombre)
+    {
+        return this.menu.buscarPlato(nombre);
     }
     
     public Plato buscarPlato(int id)
@@ -45,12 +49,12 @@ public class Restaurante
         return this.menu.agregarPlato(plato);
     }
     
-    public Plato actualizarPlato(int id, Plato plato)
+    public Plato actualizarPlato(long id, Plato plato)
     {
         return this.menu.actualizarPlato(id, plato);
     }
     
-    public Plato eliminarPlato(int id)
+    public Plato eliminarPlato(long id)
     {
         return this.menu.eliminarPlato(id);
     }
@@ -63,5 +67,11 @@ public class Restaurante
        public ArrayList<Plato> obtenerTodosPlatos(){
         return this.menu.getPlatos();
     }
+
+    public ArrayList<Venta> getVentas() {
+        return ventas;
+    }
+       
+     
     
 }

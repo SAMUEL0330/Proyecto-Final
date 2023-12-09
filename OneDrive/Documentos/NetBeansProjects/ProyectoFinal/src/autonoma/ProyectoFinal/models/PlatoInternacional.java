@@ -39,10 +39,16 @@ public class PlatoInternacional extends Plato
 {
     private String paisOrigen;
 
-    public PlatoInternacional(String paisOrigen, int id, String nombre, double precioVenta, double costoFabrica) {
-        super(id, nombre, precioVenta, costoFabrica);
+    public PlatoInternacional(String paisOrigen) {
         this.paisOrigen = paisOrigen;
     }
+
+    public PlatoInternacional(String paisOrigen, String nombre, double precioVenta, double costoFabrica) {
+        super(nombre, precioVenta, costoFabrica);
+        this.paisOrigen = paisOrigen;
+    }
+
+    
 
 
     @Override

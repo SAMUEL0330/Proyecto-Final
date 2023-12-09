@@ -52,7 +52,7 @@ public class Menu
         return null;
     }
     
-    public int buscarIndicePlato(int id)
+    public int buscarIndicePlato(long id)
     {
         for(int i = 0; i<this.platos.size();i++)
         {
@@ -66,7 +66,21 @@ public class Menu
         return -1;
     }
     
-    public Plato actualizarPlato(int id, Plato plato)
+    public Plato buscarPlato(String nombre)
+    {
+        
+        for(int i=0;i<this.platos.size();i++)
+        {
+            Plato p = this.platos.get(i);
+            if(p.getNombre().equals(nombre))
+            {
+                return p;
+            }
+        }
+        return null;   
+    }
+    
+    public Plato actualizarPlato(long id, Plato plato)
     {
         int index = this.buscarIndicePlato(id);
         
@@ -79,7 +93,7 @@ public class Menu
         }
     }
     
-    public Plato eliminarPlato(int id)
+    public Plato eliminarPlato(long id)
     {
         int index = this.buscarIndicePlato(id);
         
@@ -104,7 +118,8 @@ public class Menu
         return menu;
     }
 
-    public ArrayList<Plato> getPlatos() {
+    public ArrayList<Plato> getPlatos() 
+    {
         return platos;
     }
 }
