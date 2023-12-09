@@ -18,10 +18,10 @@ public class Venta
     private double valorTotal;
     private double valorGanancia;
     private Date fecha;
-    private List<Plato> platosVendidos;
+    private ArrayList<Plato> platosVendidos;
     private ArrayList<Venta> ventas;
     
-    public Venta(double valorTotal, double valorGanancia, Date fecha, List<Plato> platosVendidos)
+    public Venta(double valorTotal, double valorGanancia, Date fecha, ArrayList<Plato> platosVendidos)
     {
         this.codigo = codigoActual++;
         this.valorTotal = valorTotal;
@@ -84,7 +84,7 @@ public class Venta
         return platosVendidos;
     }
 
-    public void setPlatosVendidos(List<Plato> platosVendidos) 
+    public void setPlatosVendidos(ArrayList<Plato> platosVendidos) 
     {
         this.platosVendidos = platosVendidos;
     }

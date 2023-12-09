@@ -5,6 +5,7 @@
  */
 package autonoma.ProyectoFinal.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -15,14 +16,41 @@ import java.util.Date;
  */
 public class EstadoFinanciero 
 {
-    private Date fechaGeneracion;
-    private double valorTotalActual;
-    private double valorGanancia;
-    
-    public EstadoFinanciero(Date fechaGeneracion, double totalRecaudado, double totalGanancias) 
-    {
-       this.fechaGeneracion = fechaGeneracion;
-       this.valorTotalActual = totalRecaudado;
-       this.valorGanancia = totalGanancias;
+   
+    private ArrayList<Plato> platosVendidos;
+
+    public EstadoFinanciero(ArrayList<Plato> platosVendidos) {
+        this.platosVendidos = platosVendidos;
     }
+    
+    
+    
+    
+    public double calcularTotalEstadoFinanciero(ArrayList<Plato> platosvendidos){
+        
+      double sumartotal= 0;
+      
+      // Plato es el tipo del arraylist
+      //p es el nombre de cada objeto del array list
+      //platosvendidos es el nombre del arraylist
+      for(Plato p : platosvendidos ){
+          sumartotal=  p.getPrecioVenta()+ sumartotal;
+      }  
+      return sumartotal;
+    }
+    
+    public String mostrarEstadoFinanciero(){
+        String estadoFinanciero = "";
+        for(int i=0;i<this.platosVendidos.size();i++){
+            Plato p = this.platosVendidos.get(i);
+            estadoFinanciero += p.toString()+"\n";
+        }
+        double total = calcularTotalEstadoFinanciero(platosVendidos);
+        estadoFinanciero += "\n" + "Total Recaudado : " + total + "\n";
+        estadoFinanciero += "Fecha Generacion Estado Financiero : " + new Date() + "\n";
+        
+        return estadoFinanciero;
+    }
+    
+    
 }

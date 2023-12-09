@@ -18,14 +18,18 @@ public class Restaurante
     private Menu menu;
     private List<Venta> ventas;
 
-    public Restaurante(String nombre, String direccion, String telefono) 
-    {
-        this.nombre = "El buen sabor";
-        this.direccion = "Carrera 9a #55c25";
-        this.telefono = "8844444";
-        this.menu = new Menu("Menú predeterminado", 2023);
-        this.ventas = new ArrayList<>();
+
+
+    public Restaurante(String nombre, String direccion, String telefono, Menu menu, List<Venta> ventas) {
+        this.nombre = nombre;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.menu = menu;
+        this.ventas = ventas;
     }
+    
+    
+
     
     public Plato buscarPlato(Plato plato)
     {
@@ -57,8 +61,8 @@ public class Restaurante
         return this.menu.mostrarMenu();
     }
     
-    public void generarEstadoFinanciero()
-    {
-        
+       public ArrayList<Plato> obtenerTodosPlatos(){
+        return this.menu.getPlatos();
     }
+    
 }

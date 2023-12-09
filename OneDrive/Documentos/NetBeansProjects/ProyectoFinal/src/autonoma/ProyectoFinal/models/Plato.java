@@ -12,17 +12,16 @@ public abstract class Plato
     private int id;
     private String nombre;
     private double precioVenta;
-    public double costoFabrica;
-    String descripcion;
+    private double costoFabrica; 
 
-    public Plato(int id, String nombre, long costoFabrica, String descripcion) 
-    {
+    public Plato(int id, String nombre, double precioVenta, double costoFabrica) {
         this.id = id;
         this.nombre = nombre;
-        this.precioVenta = calcularPrecioVenta();
+        this.precioVenta = precioVenta;
         this.costoFabrica = costoFabrica;
-        this.descripcion = descripcion;
     }
+
+    
 
     public int getId() 
     {
@@ -64,23 +63,16 @@ public abstract class Plato
         this.costoFabrica = costoFabrica;
     }
 
-    public String getDescripcion() 
-    {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) 
-    {
-        this.descripcion = descripcion;
-    }
-
-    public abstract long calcularGanancia();
+  
+    public abstract double calcularGanancia(double costoFabrica);
     
-    public long calcularPrecioVenta()
+   /* public long calcularPrecioVenta()
     {
         double ganancia = calcularGanancia();
         double  precioSinIVA = costoFabrica + ganancia;
         return (long) (precioSinIVA * 1.19);
-    }
+    }*/
 }
+
+
 

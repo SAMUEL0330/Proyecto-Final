@@ -14,12 +14,12 @@ public class Menu
     private int anoCreacion;
     private ArrayList<Plato> platos;
 
-    public Menu(String nombreRepresentativo, int anoCreacion) 
-    {
-        this.nombreRepresentativo = "Well Taste";
-        this.anoCreacion = 2020;
-        this.platos = new ArrayList<>();
+    public Menu(String nombreRepresentativo, int anoCreacion, ArrayList<Plato> platos) {
+        this.nombreRepresentativo = nombreRepresentativo;
+        this.anoCreacion = anoCreacion;
+        this.platos = platos;
     }
+    
     
     public boolean agregarPlato(Plato plato)
     {
@@ -103,4 +103,10 @@ public class Menu
         }
         return menu;
     }
+
+    public ArrayList<Plato> getPlatos() {
+        return platos;
+    }
+    
+    
 }

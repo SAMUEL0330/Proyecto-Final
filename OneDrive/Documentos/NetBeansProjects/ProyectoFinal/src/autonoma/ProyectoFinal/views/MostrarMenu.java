@@ -5,18 +5,32 @@
  */
 package autonoma.ProyectoFinal.views;
 
+import autonoma.ProyectoFinal.models.Plato;
+import autonoma.ProyectoFinal.models.Restaurante;
+import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
- *
- * @author User
+ * Enseñará la lista de los platos añadidos
+ * @author Samuel Esteban Herrera Bedoya
  */
-public class MostrarMenu extends javax.swing.JDialog {
+public class MostrarMenu extends javax.swing.JDialog 
+{
 
+    
+     private ArrayList<Plato> platos;
+     private VentanaPrincipal ventanaPrincipal;
+     private Restaurante restaurante;
     /**
      * Creates new form MostrarMenu
      */
-    public MostrarMenu(java.awt.Frame parent, boolean modal) {
+    public MostrarMenu(java.awt.Frame parent, boolean modal) 
+    {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -27,6 +41,9 @@ public class MostrarMenu extends javax.swing.JDialog {
         {
             
         }
+        this.restaurante= restaurante;
+        this.ventanaPrincipal = ventanaPrincipal;
+        this.platos = restaurante.obtenerTodosPlatos();
     }
 
     /**
@@ -38,22 +55,325 @@ public class MostrarMenu extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        fondoVentanaMenu = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        btnVolverMenu = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaMenu = new javax.swing.JTable();
+        Actualizar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+
+        jPanel4.setBackground(new java.awt.Color(255, 153, 102));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
+        jLabel3.setText("El buen sabor");
+
+        jPanel5.setBackground(new java.awt.Color(255, 153, 102));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
+        jLabel4.setText("El buen sabor");
+
+        jPanel6.setBackground(new java.awt.Color(255, 153, 102));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
+        jLabel5.setText("El buen sabor");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        fondoVentanaMenu.setBackground(new java.awt.Color(255, 204, 51));
+
+        jPanel3.setBackground(new java.awt.Color(255, 153, 102));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
+        jLabel7.setText("Menu");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel7)
+                .addGap(28, 28, 28))
+        );
+
+        btnVolverMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVolverMenuMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVolverMenuMouseExited(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setText("Volver");
+
+        javax.swing.GroupLayout btnVolverMenuLayout = new javax.swing.GroupLayout(btnVolverMenu);
+        btnVolverMenu.setLayout(btnVolverMenuLayout);
+        btnVolverMenuLayout.setHorizontalGroup(
+            btnVolverMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnVolverMenuLayout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addGap(34, 34, 34))
+        );
+        btnVolverMenuLayout.setVerticalGroup(
+            btnVolverMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnVolverMenuLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        tablaMenu.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "ID", "Nombre", "Precio", "Costo"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaMenu);
+        if (tablaMenu.getColumnModel().getColumnCount() > 0) {
+            tablaMenu.getColumnModel().getColumn(0).setResizable(false);
+            tablaMenu.getColumnModel().getColumn(1).setResizable(false);
+            tablaMenu.getColumnModel().getColumn(2).setResizable(false);
+            tablaMenu.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        Actualizar.setText("jButton1");
+        Actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ActualizarActionPerformed(evt);
+            }
+        });
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout fondoVentanaMenuLayout = new javax.swing.GroupLayout(fondoVentanaMenu);
+        fondoVentanaMenu.setLayout(fondoVentanaMenuLayout);
+        fondoVentanaMenuLayout.setHorizontalGroup(
+            fondoVentanaMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fondoVentanaMenuLayout.createSequentialGroup()
+                .addGroup(fondoVentanaMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(fondoVentanaMenuLayout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(Actualizar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminar))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addComponent(btnVolverMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3))
+        );
+        fondoVentanaMenuLayout.setVerticalGroup(
+            fondoVentanaMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoVentanaMenuLayout.createSequentialGroup()
+                .addGroup(fondoVentanaMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVolverMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addGroup(fondoVentanaMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Actualizar)
+                    .addComponent(btnEliminar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(fondoVentanaMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(fondoVentanaMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnVolverMenuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMenuMouseEntered
+        this.mouseEntered(btnVolverMenu);
+    }//GEN-LAST:event_btnVolverMenuMouseEntered
+
+    private void btnVolverMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMenuMouseExited
+        this.mouseExited(btnVolverMenu);
+    }//GEN-LAST:event_btnVolverMenuMouseExited
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        
+        int fila = this.tablaMenu.getSelectedRow();
+        if(fila>=0){
+            Plato p = this.platos.get(fila);
+            int option = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el plato "+p.getNombre()+" de forma permanente?");
+            if(option == 0){
+                this.restaurante.eliminarPlato(p.getId());
+                this.platos = this.restaurante.obtenerTodosPlatos();
+                this.llenarTabla();
+                JOptionPane.showMessageDialog(this, "El plato "+p.getNombre()+" fue eliminado de forma exitosa");
+            }
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor seleccione el plato que desea eliminar");
+        }
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void ActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ActualizarActionPerformed
+        // TODO add your handling code here:
+         int fila = this.tablaMenu.getSelectedRow();
+        if(fila>=0){
+            Plato p = this.platos.get(fila);
+            ActualizarPlato ventanaActualizar = new ActualizarPlato(this.ventanaPrincipal, true, restaurante, p, this);
+            ventanaActualizar.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor seleccione el plato que desea eliminar");
+        }
+    }//GEN-LAST:event_ActualizarActionPerformed
+
+    private void mouseEntered(JPanel panel)
+    {
+        panel.setBackground(new Color(255, 131, 7));
+    }
+    
+    private void mouseExited(JPanel panel)
+    {
+        panel.setBackground(new Color(240,240,240));
+    }
+    
+   
+    
+    public void llenarTabla(){
+        DefaultTableModel modelDefault = new DefaultTableModel(new String[]{"Id","Nombre","Precio", "Costo"}, this.platos.size());
+        this.tablaMenu.setModel(modelDefault);
+        
+        TableModel dataModel = tablaMenu.getModel();
+        for (int i = 0; i < this.platos.size(); i++) {
+            Plato plato = this.platos.get(i);
+            
+            dataModel.setValueAt(plato.getId(),i,0);
+            dataModel.setValueAt(plato.getNombre(),i,1);
+            dataModel.setValueAt(plato.getPrecioVenta(),i,2);
+            dataModel.setValueAt(plato.getCostoFabrica(),i,3);
+            
+            
+        }
+        
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Actualizar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JPanel btnVolverMenu;
+    private javax.swing.JPanel fondoVentanaMenu;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tablaMenu;
     // End of variables declaration//GEN-END:variables
 }
